@@ -2,10 +2,10 @@ from workout_tracking import parser
 
 
 def parse_file(filepath):
-    """Reads a markdown note, isolates the gym section, and then parses each line into exercise data.
+    """Reads a Markdown note, isolates the gym section, and then parses each line into exercise data.
 
     Args:
-        filepath (str): The path to the markdown file.
+        filepath (str): The path to the Markdown file.
 
     Returns:
         list: A list containing parsed workout data.
@@ -34,7 +34,7 @@ def extract_section(str_list, heading_string):
     """Extracts all strings in a list that belong to a specific heading.
 
     Args:
-        str_list (list): A list of strings, usually read from a markdown file, that is to be extracted.
+        str_list (list): A list of strings, usually read from a Markdown file, that is to be extracted.
         heading_string (str): The name of the heading.
 
     Returns:

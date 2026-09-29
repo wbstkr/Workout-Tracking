@@ -3,7 +3,7 @@ from workout_tracking import file_handler
 
 
 def main():
-    """Reads a markdown note, isolates the gym section, and then parses each line into exercise data."""
+    """Reads a Markdown note, isolates the gym section, and then parses each line into exercise data."""
 
     # set up command line argument parsing
     cli_parser = argparse.ArgumentParser(
