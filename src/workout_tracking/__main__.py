@@ -1,4 +1,4 @@
-import argparse
+from argparse import ArgumentParser
 from workout_tracking import file_handler
 
 
@@ -6,7 +6,7 @@ def main():
     """Reads a Markdown note, isolates the gym section, and then parses each line into exercise data."""
 
     # set up command line argument parsing
-    cli_parser = argparse.ArgumentParser(
+    cli_parser = ArgumentParser(
         description="Extract and parse plain text workout data from markdown files."
     )
     cli_parser.add_argument(
