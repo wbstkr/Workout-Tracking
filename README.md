@@ -11,7 +11,13 @@ A command line tool to extract workout data from markdown files.
 
 ## Installation
 
-TODO
+Clone the repository and install the package using pip:
+
+```bash
+git clone https://github.com/wbstkr/Workout-Tracking.git
+cd Workout-Tracking
+pip install .
+```
 
 ## Usage
 

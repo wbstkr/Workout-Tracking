@@ -1,4 +1,4 @@
-import parser
+from workout_tracking import parser
 
 
 def parse_file(filepath):

@@ -1,5 +1,5 @@
 import argparse
-import file_handler
+from workout_tracking import file_handler
 
 
 def main():
