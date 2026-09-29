@@ -2,7 +2,7 @@ def parse_raw_exercise_string(raw_exercise_string):
     """Converts a raw exercise string into a parsed exercise dictionary containing an exercise name, an exercise type, and list of sets.
 
     Args:
-        raw_exercise_string (str): string containing raw exercise data
+        raw_exercise_string (str): A string containing raw exercise data.
 
     Returns:
         dict: A dictionary containing:
@@ -19,6 +19,7 @@ def parse_raw_exercise_string(raw_exercise_string):
     exercise_type = ""
     exercise_sets = []
 
+    # initialize helper variables
     current_weight = 0
     current_unit = ""
 
