@@ -6,7 +6,7 @@
 - [X] task 2
 - [ ] task 3
 
-# Gym
+# Workout
 
 Dumbbell Curls 25lbs 10 5 2 20lbs 9 6 4
 Triceps Press Machine 100lbs 10 150lbs 10 175lbs 10 10

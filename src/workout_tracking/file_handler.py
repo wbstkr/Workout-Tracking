@@ -1,11 +1,12 @@
 from workout_tracking import parser
 
 
-def parse_file(filepath):
-    """Reads a Markdown note, isolates the gym section, and then parses each line into exercise data.
+def parse_file(filepath, heading_string):
+    """Reads a Markdown note, isolates the section specified by the provided heading, and then parses each line into exercise data.
 
     Args:
         filepath (str): The path to the Markdown file.
+        heading_string (str): The heading to extract from.
 
     Returns:
         list: A list containing parsed workout data.
@@ -20,7 +21,7 @@ def parse_file(filepath):
     parsed_workout = []
 
     # isolate gym section
-    gym_section = extract_section(stripped_lines, "Gym")
+    gym_section = extract_section(stripped_lines, heading_string)
 
     # convert the raw exercise strings in the gym section into parsed exercise data
     for raw_exercise_string in gym_section:
@@ -51,11 +52,11 @@ def extract_section(str_list, heading_string):
             is_target_section = True
             continue
 
-            # indicate that gym section has been exhausted
+        # indicate that gym section has been exhausted
         if line.startswith("#") and line != f"# {heading_string}":
             is_target_section = False
 
-            # store exercise into gym_section when in gym section
+        # store exercise into gym_section when in gym section
         if is_target_section and line != "":
             extracted_section.append(line)
 
