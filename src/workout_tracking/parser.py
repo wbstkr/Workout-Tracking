@@ -15,7 +15,7 @@ def parse_raw_exercise_string(raw_exercise_string):
     words = raw_exercise_string.split()
 
     # initialize variables
-    exercise_name = ""
+    exercise_name_parts = []
     exercise_type = ""
     exercise_sets = []
 
@@ -25,30 +25,26 @@ def parse_raw_exercise_string(raw_exercise_string):
 
     # parse through words to populate dictionary members
     for word in words:
-        # construct exercise name with words until first exercise type indicator or set is reached
-        if word.isalpha() and word != "bw":
-            exercise_name += " " + word
-
         # indicate that exercise is rep based if weight is indicated as body weight
-        elif word == "bw":
+        if word == "bw":
             exercise_type = "body weight"
 
         # indicate that exercise is weight based and therefore isotonic if weight is indicated with units
-        elif word.endswith(("lbs", "kgs")):
+        elif word.endswith(("lbs", "kgs")) and word[:-3].isdigit():
             exercise_type = "isotonic"
-            current_weight = int("".join([char for char in word if char.isdigit()]))
-            current_unit = "".join([char for char in word if char.isalpha()])
+            current_unit = word[-3:]
+            current_weight = int(word[:-3])
 
         # indicate that exercise is time based and therefore isometric if set is indicated in terms of seconds
-        elif word.endswith("s"):
+        elif word.endswith("s") and word[:-1].isdigit():
             exercise_type = "isometric"
-            rep = int(word[:-1])
+            duration = int(word[:-1])
 
             # record isometric set
-            exercise_sets.append({"unit": "seconds", "rep": rep})
+            exercise_sets.append({"unit": "seconds", "duration": duration})
 
         # record body weight and isotonic set
-        else:
+        elif word.isdigit():
             rep = int(word)
             if exercise_type == "isotonic":
                 exercise_sets.append(
@@ -57,8 +53,12 @@ def parse_raw_exercise_string(raw_exercise_string):
             elif exercise_type == "body weight":
                 exercise_sets.append({"rep": rep})
 
-    # remove leading space remaining from exercise name building loop
-    exercise_name = exercise_name[1:]
+        # add to exercise name builder
+        else:
+            exercise_name_parts.append(word)
+
+    # construct exercise name by joining parts
+    exercise_name = " ".join(exercise_name_parts)
 
     # return structured data
     return {"name": exercise_name, "type": exercise_type, "sets": exercise_sets}
