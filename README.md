@@ -21,9 +21,25 @@ pip install .
 
 ## Usage
 
+The CLI accepts one or more files or directories and outputs a compiled JSON dictionary of your workout history.
+
 ```bash
-python src [filepath]
+# Parse a single file
+workout-tracking data/2026-09-28.md
+
+# Parse a directory recursively
+workout-tracking data/ -r
+
+# Advanced filtering and custom headings
+workout-tracking archive/ data/ -r --filter "2026-*" --heading "Workout"
 ```
+
+### Options
+
+* `paths` (required): One or more file or directory paths.
+* `-r`, `--recursive`: Recursively scan any provided directories.
+* `-f`, `--filter`: Filename pattern to match when scanning directories (default: `*`).
+* `-H`, `--heading`: The markdown heading to extract data from (default: `Workout`).
 
 ### Expected Input
 
@@ -33,6 +49,8 @@ Dumbbell Curls 25lbs 12 10 8 20lbs 30
 Pushups bw 20 15 10
 Plank 60s 45s 30s
 ```
+
+---
 
 ### Omar Faruque
 
