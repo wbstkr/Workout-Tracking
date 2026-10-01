@@ -1,8 +1,12 @@
+"""Handles file I/O operations and isolates specific workout sections from Markdown
+notes."""
+
 from workout_tracking import parser
 
 
 def parse_file(filepath, heading_string):
-    """Reads a Markdown note, isolates the section specified by the provided heading, and then parses each line into exercise data.
+    """Reads a Markdown note, isolates the section specified by the provided heading,
+    and then parses each line into exercise data.
 
     Args:
         filepath (str): The path to the Markdown file.
@@ -13,7 +17,7 @@ def parse_file(filepath, heading_string):
     """
 
     # load note and strip whitespace
-    with open(filepath, "r") as file:
+    with open(filepath, "r", encoding="utf-8") as file:
         lines = file.readlines()
     stripped_lines = [line.strip() for line in lines]
 
@@ -35,7 +39,8 @@ def extract_section(str_list, heading_string):
     """Extracts all strings in a list that belong to a specific heading.
 
     Args:
-        str_list (list): A list of strings, usually read from a Markdown file, that is to be extracted.
+        str_list (list): A list of strings, usually read from a Markdown file, that is
+            to be extracted.
         heading_string (str): The name of the heading.
 
     Returns:

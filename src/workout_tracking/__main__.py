@@ -1,3 +1,6 @@
+"""Command-line interface and main orchestration module for the workout tracking ETL
+pipeline."""
+
 from argparse import ArgumentParser
 import json
 from pathlib import Path
@@ -5,7 +8,8 @@ from workout_tracking import batch_handler, file_handler
 
 
 def main():
-    """Reads a Markdown note, isolates the gym section, and then parses each line into exercise data."""
+    """Reads a Markdown note, isolates the gym section, and then parses each line into
+    exercise data."""
 
     # set up command line argument parsing
     cli_parser = ArgumentParser(

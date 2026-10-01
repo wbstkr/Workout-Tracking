@@ -1,5 +1,10 @@
+"""Parses raw, plain-text workout strings into structured dictionary formats based on
+exercise type."""
+
+
 def parse_raw_exercise_string(raw_exercise_string):
-    """Converts a raw exercise string into a parsed exercise dictionary containing an exercise name, an exercise type, and list of sets.
+    """Converts a raw exercise string into a parsed exercise dictionary containing an
+    exercise name, an exercise type, and list of sets.
 
     Args:
         raw_exercise_string (str): A string containing raw exercise data.
@@ -7,7 +12,8 @@ def parse_raw_exercise_string(raw_exercise_string):
     Returns:
         dict: A dictionary containing:
             - 'name' (str): The exercise name.
-            - 'type' (str): The classification ('isotonic', 'body weight', or 'isometric').
+            - 'type' (str): The classification ('isotonic', 'body weight', or
+                'isometric').
             - 'sets' (list): A list of dictionaries representing individual sets.
     """
 
@@ -29,13 +35,15 @@ def parse_raw_exercise_string(raw_exercise_string):
         if word == "bw":
             exercise_type = "body weight"
 
-        # indicate that exercise is weight based and therefore isotonic if weight is indicated with units
+        # indicate that exercise is weight based and therefore isotonic if weight is
+        # indicated with units
         elif word.endswith(("lbs", "kgs")) and word[:-3].isdigit():
             exercise_type = "isotonic"
             current_unit = word[-3:]
             current_weight = int(word[:-3])
 
-        # indicate that exercise is time based and therefore isometric if set is indicated in terms of seconds
+        # indicate that exercise is time based and therefore isometric if set is
+        # indicated in terms of seconds
         elif word.endswith("s") and word[:-1].isdigit():
             exercise_type = "isometric"
             duration = int(word[:-1])
